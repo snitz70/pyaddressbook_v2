@@ -19,3 +19,13 @@ class Addressbook(BaseModel):
 class Contact(BaseModel):
     name = CharField(unique=False)
     addressbook = ForeignKeyField(Addressbook, related_name='contacts')
+
+    def add_address(self, address):
+        return Address(contact=self, address=address)
+
+
+class Address(BaseModel):
+    address = CharField()
+    contact = ForeignKeyField(Contact, related_name='addresses')
+
+
