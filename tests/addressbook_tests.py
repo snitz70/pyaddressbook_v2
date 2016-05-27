@@ -16,3 +16,9 @@ class TestAddressbook():
         assert contact.name == 'brian snyder'
         assert contact.addressbook.name == 'test addressbook'
 
+    def test_add_address_to_contact(self, addrbook):
+        contact = addrbook.add_contact('brian snyder')
+        address = contact.add_address('512 2nd st se dyersville ia 52040')
+        assert address.address == '512 2nd st se dyersville ia 52040'
+        assert address.contact.name == 'brian snyder'
+
